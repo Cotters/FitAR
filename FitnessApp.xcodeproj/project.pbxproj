@@ -1,0 +1,604 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0312CBC6204C1FC700347CF2 /* RaceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0312CBC5204C1FC700347CF2 /* RaceService.swift */; };
+		0312CBC8204CA93B00347CF2 /* GameMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0312CBC7204CA93B00347CF2 /* GameMapViewController.swift */; };
+		0312CBCC204CBB7300347CF2 /* BaseNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0312CBCB204CBB7300347CF2 /* BaseNode.swift */; };
+		031B2E501FC8C86100110D03 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031B2E4F1FC8C86100110D03 /* AppDelegate.swift */; };
+		031B2E521FC8C86100110D03 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 031B2E511FC8C86100110D03 /* art.scnassets */; };
+		031B2E541FC8C86100110D03 /* ARCameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031B2E531FC8C86100110D03 /* ARCameraViewController.swift */; };
+		031B2E571FC8C86100110D03 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 031B2E551FC8C86100110D03 /* Main.storyboard */; };
+		031B2E591FC8C86100110D03 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 031B2E581FC8C86100110D03 /* Assets.xcassets */; };
+		031B2E5C1FC8C86100110D03 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 031B2E5A1FC8C86100110D03 /* LaunchScreen.storyboard */; };
+		031B2E641FC8C8A200110D03 /* CustomTabBarControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031B2E631FC8C8A200110D03 /* CustomTabBarControllers.swift */; };
+		031B2E6A1FC8C92300110D03 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031B2E691FC8C92300110D03 /* HomeViewController.swift */; };
+		031B2E6C1FC8C93300110D03 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031B2E6B1FC8C93300110D03 /* ProfileViewController.swift */; };
+		031B2E6F1FC8C9B700110D03 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031B2E6E1FC8C9B700110D03 /* Extensions.swift */; };
+		031D0CB4201F36C900D7FD08 /* MapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031D0CB3201F36C900D7FD08 /* MapController.swift */; };
+		034419522062A28D0085D122 /* ARCameraViewExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034419512062A28D0085D122 /* ARCameraViewExtentions.swift */; };
+		034E9012202F9B2B0014A017 /* RaceCreationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034E9011202F9B2B0014A017 /* RaceCreationController.swift */; };
+		035E7D6820234809007863F8 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035E7D6720234809007863F8 /* Profile.swift */; };
+		0374956D2055C9F100D6FA32 /* FriendProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0374956C2055C9F100D6FA32 /* FriendProfileViewController.swift */; };
+		039732FD20532C220091548C /* FriendsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039732FC20532C220091548C /* FriendsTableViewController.swift */; };
+		039CADA3204AE23F00CCF2E0 /* RaceRetriever.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039CADA2204AE23F00CCF2E0 /* RaceRetriever.swift */; };
+		03B9CB532044BEE00033A214 /* UserGoals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B9CB522044BEE00033A214 /* UserGoals.swift */; };
+		03B9CB5B2046D9290033A214 /* RacePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B9CB5A2046D9290033A214 /* RacePickerViewController.swift */; };
+		03B9CB5D2046DC290033A214 /* UserContainedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B9CB5C2046DC290033A214 /* UserContainedViewController.swift */; };
+		03B9CB5F2046DC910033A214 /* Race.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B9CB5E2046DC910033A214 /* Race.swift */; };
+		03B9CB63204747610033A214 /* RaceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B9CB622047475F0033A214 /* RaceTableViewCell.swift */; };
+		03C5EEF72035C00500E335EB /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03C5EEF62035C00500E335EB /* MapKit.framework */; };
+		03C5EEF92035C02100E335EB /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03C5EEF82035C02100E335EB /* HealthKit.framework */; };
+		03C5EEFC2035CDBB00E335EB /* RaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C5EEFB2035CDBB00E335EB /* RaceViewController.swift */; };
+		03C5EEFE2035CEFB00E335EB /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C5EEFD2035CEFB00E335EB /* MapViewController.swift */; };
+		03C5EF2420360E3000E335EB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 03C5EF2320360E3000E335EB /* GoogleService-Info.plist */; };
+		03C5EF26203840C600E335EB /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C5EF25203840C500E335EB /* LoginView.swift */; };
+		03C5EF28203840D200E335EB /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C5EF27203840D200E335EB /* RegisterViewController.swift */; };
+		03C5EF2A2038CF8E00E335EB /* ScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C5EF292038CF8E00E335EB /* ScrollViewController.swift */; };
+		03F838892064588700D76E03 /* EditRacesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F838882064588700D76E03 /* EditRacesTableViewController.swift */; };
+		03F8388B2064617B00D76E03 /* CustomTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F8388A2064617B00D76E03 /* CustomTableViewController.swift */; };
+		03F8388E206462FB00D76E03 /* MatrixHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F8388D206462FB00D76E03 /* MatrixHelper.swift */; };
+		931EE025866DC3866984D5F9 /* Pods_FitnessApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0BFDBCD35023AB5220917AC /* Pods_FitnessApp.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0312CBC5204C1FC700347CF2 /* RaceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RaceService.swift; path = FitnessApp/RaceService.swift; sourceTree = SOURCE_ROOT; };
+		0312CBC7204CA93B00347CF2 /* GameMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameMapViewController.swift; sourceTree = "<group>"; };
+		0312CBCB204CBB7300347CF2 /* BaseNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNode.swift; sourceTree = "<group>"; };
+		031B2E4C1FC8C86100110D03 /* FitnessApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FitnessApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		031B2E4F1FC8C86100110D03 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		031B2E511FC8C86100110D03 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
+		031B2E531FC8C86100110D03 /* ARCameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARCameraViewController.swift; sourceTree = "<group>"; };
+		031B2E561FC8C86100110D03 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		031B2E581FC8C86100110D03 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		031B2E5B1FC8C86100110D03 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		031B2E5D1FC8C86100110D03 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		031B2E631FC8C8A200110D03 /* CustomTabBarControllers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarControllers.swift; sourceTree = "<group>"; };
+		031B2E691FC8C92300110D03 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		031B2E6B1FC8C93300110D03 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		031B2E6E1FC8C9B700110D03 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		031D0CB3201F36C900D7FD08 /* MapController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapController.swift; sourceTree = "<group>"; };
+		034419512062A28D0085D122 /* ARCameraViewExtentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARCameraViewExtentions.swift; sourceTree = "<group>"; };
+		034E9011202F9B2B0014A017 /* RaceCreationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaceCreationController.swift; sourceTree = "<group>"; };
+		035E7D6720234809007863F8 /* Profile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		0374956C2055C9F100D6FA32 /* FriendProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendProfileViewController.swift; sourceTree = "<group>"; };
+		039732FC20532C220091548C /* FriendsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsTableViewController.swift; sourceTree = "<group>"; };
+		039CADA2204AE23F00CCF2E0 /* RaceRetriever.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RaceRetriever.swift; path = FitnessApp/RaceRetriever.swift; sourceTree = SOURCE_ROOT; };
+		03B9CB522044BEE00033A214 /* UserGoals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserGoals.swift; sourceTree = "<group>"; };
+		03B9CB5A2046D9290033A214 /* RacePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RacePickerViewController.swift; sourceTree = "<group>"; };
+		03B9CB5C2046DC290033A214 /* UserContainedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserContainedViewController.swift; sourceTree = "<group>"; };
+		03B9CB5E2046DC910033A214 /* Race.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Race.swift; sourceTree = "<group>"; };
+		03B9CB622047475F0033A214 /* RaceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaceTableViewCell.swift; sourceTree = "<group>"; };
+		03C5EEF62035C00500E335EB /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		03C5EEF82035C02100E335EB /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
+		03C5EEFA2035C02100E335EB /* FitnessApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FitnessApp.entitlements; sourceTree = "<group>"; };
+		03C5EEFB2035CDBB00E335EB /* RaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaceViewController.swift; sourceTree = "<group>"; };
+		03C5EEFD2035CEFB00E335EB /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		03C5EF2320360E3000E335EB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		03C5EF25203840C500E335EB /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		03C5EF27203840D200E335EB /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		03C5EF292038CF8E00E335EB /* ScrollViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollViewController.swift; sourceTree = "<group>"; };
+		03F838882064588700D76E03 /* EditRacesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditRacesTableViewController.swift; sourceTree = "<group>"; };
+		03F8388A2064617B00D76E03 /* CustomTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewController.swift; sourceTree = "<group>"; };
+		03F8388D206462FB00D76E03 /* MatrixHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatrixHelper.swift; sourceTree = "<group>"; };
+		44BAD783F21D9F5006E1B928 /* Pods-FitnessApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FitnessApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-FitnessApp/Pods-FitnessApp.release.xcconfig"; sourceTree = "<group>"; };
+		BDD3597688BAD2F5FF2B2980 /* Pods-FitnessApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FitnessApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FitnessApp/Pods-FitnessApp.debug.xcconfig"; sourceTree = "<group>"; };
+		C0BFDBCD35023AB5220917AC /* Pods_FitnessApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FitnessApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		031B2E491FC8C86100110D03 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				03C5EEF72035C00500E335EB /* MapKit.framework in Frameworks */,
+				03C5EEF92035C02100E335EB /* HealthKit.framework in Frameworks */,
+				931EE025866DC3866984D5F9 /* Pods_FitnessApp.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		031B2E431FC8C86100110D03 = {
+			isa = PBXGroup;
+			children = (
+				031B2E4E1FC8C86100110D03 /* FitnessApp */,
+				031B2E4D1FC8C86100110D03 /* Products */,
+				03C5EEF52035C00500E335EB /* Frameworks */,
+				3AB71F830CB5F2C709AAA4A7 /* Pods */,
+			);
+			sourceTree = "<group>";
+		};
+		031B2E4D1FC8C86100110D03 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				031B2E4C1FC8C86100110D03 /* FitnessApp.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		031B2E4E1FC8C86100110D03 /* FitnessApp */ = {
+			isa = PBXGroup;
+			children = (
+				03C5EEFA2035C02100E335EB /* FitnessApp.entitlements */,
+				031B2E4F1FC8C86100110D03 /* AppDelegate.swift */,
+				031B2E511FC8C86100110D03 /* art.scnassets */,
+				039CADA2204AE23F00CCF2E0 /* RaceRetriever.swift */,
+				0312CBC5204C1FC700347CF2 /* RaceService.swift */,
+				039CADA6204AFFDD00CCF2E0 /* Models */,
+				03F8388C2064624A00D76E03 /* Helpers+Extensions */,
+				031B2E6D1FC8C93800110D03 /* Controllers */,
+				031B2E551FC8C86100110D03 /* Main.storyboard */,
+				031B2E581FC8C86100110D03 /* Assets.xcassets */,
+				031B2E5A1FC8C86100110D03 /* LaunchScreen.storyboard */,
+				031B2E5D1FC8C86100110D03 /* Info.plist */,
+				03C5EF2320360E3000E335EB /* GoogleService-Info.plist */,
+				03C5EEFD2035CEFB00E335EB /* MapViewController.swift */,
+			);
+			path = FitnessApp;
+			sourceTree = "<group>";
+		};
+		031B2E6D1FC8C93800110D03 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				031B2E631FC8C8A200110D03 /* CustomTabBarControllers.swift */,
+				03B9CB5C2046DC290033A214 /* UserContainedViewController.swift */,
+				03F8388A2064617B00D76E03 /* CustomTableViewController.swift */,
+				03B9CB5A2046D9290033A214 /* RacePickerViewController.swift */,
+				0312CBC7204CA93B00347CF2 /* GameMapViewController.swift */,
+				039CADA4204AFFA100CCF2E0 /* TabBarControllers */,
+				03B9CB542044C2640033A214 /* Sign in */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		039CADA4204AFFA100CCF2E0 /* TabBarControllers */ = {
+			isa = PBXGroup;
+			children = (
+				031B2E691FC8C92300110D03 /* HomeViewController.swift */,
+				031D0CB3201F36C900D7FD08 /* MapController.swift */,
+				031B2E531FC8C86100110D03 /* ARCameraViewController.swift */,
+				034419512062A28D0085D122 /* ARCameraViewExtentions.swift */,
+				03B9CB552044C2900033A214 /* Profile */,
+			);
+			path = TabBarControllers;
+			sourceTree = "<group>";
+		};
+		039CADA6204AFFDD00CCF2E0 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				035E7D6720234809007863F8 /* Profile.swift */,
+				03B9CB522044BEE00033A214 /* UserGoals.swift */,
+				03B9CB5E2046DC910033A214 /* Race.swift */,
+				0312CBCB204CBB7300347CF2 /* BaseNode.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		03B9CB542044C2640033A214 /* Sign in */ = {
+			isa = PBXGroup;
+			children = (
+				03C5EF292038CF8E00E335EB /* ScrollViewController.swift */,
+				03C5EF27203840D200E335EB /* RegisterViewController.swift */,
+				03C5EF25203840C500E335EB /* LoginView.swift */,
+			);
+			path = "Sign in";
+			sourceTree = "<group>";
+		};
+		03B9CB552044C2900033A214 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				031B2E6B1FC8C93300110D03 /* ProfileViewController.swift */,
+				034E9011202F9B2B0014A017 /* RaceCreationController.swift */,
+				03F838882064588700D76E03 /* EditRacesTableViewController.swift */,
+				03B9CB622047475F0033A214 /* RaceTableViewCell.swift */,
+				039732FC20532C220091548C /* FriendsTableViewController.swift */,
+				0374956C2055C9F100D6FA32 /* FriendProfileViewController.swift */,
+				03C5EEFB2035CDBB00E335EB /* RaceViewController.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		03C5EEF52035C00500E335EB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				03C5EEF82035C02100E335EB /* HealthKit.framework */,
+				03C5EEF62035C00500E335EB /* MapKit.framework */,
+				C0BFDBCD35023AB5220917AC /* Pods_FitnessApp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		03F8388C2064624A00D76E03 /* Helpers+Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				031B2E6E1FC8C9B700110D03 /* Extensions.swift */,
+				03F8388D206462FB00D76E03 /* MatrixHelper.swift */,
+			);
+			path = "Helpers+Extensions";
+			sourceTree = "<group>";
+		};
+		3AB71F830CB5F2C709AAA4A7 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				BDD3597688BAD2F5FF2B2980 /* Pods-FitnessApp.debug.xcconfig */,
+				44BAD783F21D9F5006E1B928 /* Pods-FitnessApp.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		031B2E4B1FC8C86100110D03 /* FitnessApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 031B2E601FC8C86100110D03 /* Build configuration list for PBXNativeTarget "FitnessApp" */;
+			buildPhases = (
+				1FB9B54901922D881BD38804 /* [CP] Check Pods Manifest.lock */,
+				031B2E481FC8C86100110D03 /* Sources */,
+				031B2E491FC8C86100110D03 /* Frameworks */,
+				031B2E4A1FC8C86100110D03 /* Resources */,
+				7F3506F70F5554C9AFE5FEBD /* [CP] Embed Pods Frameworks */,
+				08435B4C990F4911FFCC29C0 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FitnessApp;
+			productName = FitnessApp;
+			productReference = 031B2E4C1FC8C86100110D03 /* FitnessApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		031B2E441FC8C86100110D03 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0910;
+				LastUpgradeCheck = 0910;
+				ORGANIZATIONNAME = "Josh Cotterell";
+				TargetAttributes = {
+					031B2E4B1FC8C86100110D03 = {
+						CreatedOnToolsVersion = 9.1;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.HealthKit = {
+								enabled = 1;
+							};
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
+					};
+				};
+			};
+			buildConfigurationList = 031B2E471FC8C86100110D03 /* Build configuration list for PBXProject "FitnessApp" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 031B2E431FC8C86100110D03;
+			productRefGroup = 031B2E4D1FC8C86100110D03 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				031B2E4B1FC8C86100110D03 /* FitnessApp */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		031B2E4A1FC8C86100110D03 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				031B2E521FC8C86100110D03 /* art.scnassets in Resources */,
+				031B2E5C1FC8C86100110D03 /* LaunchScreen.storyboard in Resources */,
+				03C5EF2420360E3000E335EB /* GoogleService-Info.plist in Resources */,
+				031B2E591FC8C86100110D03 /* Assets.xcassets in Resources */,
+				031B2E571FC8C86100110D03 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		08435B4C990F4911FFCC29C0 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FitnessApp/Pods-FitnessApp-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		1FB9B54901922D881BD38804 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FitnessApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7F3506F70F5554C9AFE5FEBD /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-FitnessApp/Pods-FitnessApp-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/ARCL/ARCL.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ARCL.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FitnessApp/Pods-FitnessApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		031B2E481FC8C86100110D03 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0312CBC6204C1FC700347CF2 /* RaceService.swift in Sources */,
+				03B9CB532044BEE00033A214 /* UserGoals.swift in Sources */,
+				03B9CB5F2046DC910033A214 /* Race.swift in Sources */,
+				031B2E641FC8C8A200110D03 /* CustomTabBarControllers.swift in Sources */,
+				035E7D6820234809007863F8 /* Profile.swift in Sources */,
+				03C5EF2A2038CF8E00E335EB /* ScrollViewController.swift in Sources */,
+				031D0CB4201F36C900D7FD08 /* MapController.swift in Sources */,
+				031B2E6F1FC8C9B700110D03 /* Extensions.swift in Sources */,
+				03B9CB63204747610033A214 /* RaceTableViewCell.swift in Sources */,
+				039CADA3204AE23F00CCF2E0 /* RaceRetriever.swift in Sources */,
+				03C5EEFC2035CDBB00E335EB /* RaceViewController.swift in Sources */,
+				0312CBC8204CA93B00347CF2 /* GameMapViewController.swift in Sources */,
+				03C5EF28203840D200E335EB /* RegisterViewController.swift in Sources */,
+				03C5EEFE2035CEFB00E335EB /* MapViewController.swift in Sources */,
+				031B2E541FC8C86100110D03 /* ARCameraViewController.swift in Sources */,
+				0374956D2055C9F100D6FA32 /* FriendProfileViewController.swift in Sources */,
+				034419522062A28D0085D122 /* ARCameraViewExtentions.swift in Sources */,
+				03F8388B2064617B00D76E03 /* CustomTableViewController.swift in Sources */,
+				03C5EF26203840C600E335EB /* LoginView.swift in Sources */,
+				03B9CB5B2046D9290033A214 /* RacePickerViewController.swift in Sources */,
+				031B2E6C1FC8C93300110D03 /* ProfileViewController.swift in Sources */,
+				0312CBCC204CBB7300347CF2 /* BaseNode.swift in Sources */,
+				031B2E501FC8C86100110D03 /* AppDelegate.swift in Sources */,
+				03F8388E206462FB00D76E03 /* MatrixHelper.swift in Sources */,
+				03B9CB5D2046DC290033A214 /* UserContainedViewController.swift in Sources */,
+				03F838892064588700D76E03 /* EditRacesTableViewController.swift in Sources */,
+				034E9012202F9B2B0014A017 /* RaceCreationController.swift in Sources */,
+				039732FD20532C220091548C /* FriendsTableViewController.swift in Sources */,
+				031B2E6A1FC8C92300110D03 /* HomeViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		031B2E551FC8C86100110D03 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				031B2E561FC8C86100110D03 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		031B2E5A1FC8C86100110D03 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				031B2E5B1FC8C86100110D03 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		031B2E5E1FC8C86100110D03 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		031B2E5F1FC8C86100110D03 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		031B2E611FC8C86100110D03 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BDD3597688BAD2F5FF2B2980 /* Pods-FitnessApp.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = FitnessApp/FitnessApp.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 86997N65SQ;
+				INFOPLIST_FILE = FitnessApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = cotters.FitnessApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		031B2E621FC8C86100110D03 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 44BAD783F21D9F5006E1B928 /* Pods-FitnessApp.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = FitnessApp/FitnessApp.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 86997N65SQ;
+				INFOPLIST_FILE = FitnessApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = cotters.FitnessApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		031B2E471FC8C86100110D03 /* Build configuration list for PBXProject "FitnessApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				031B2E5E1FC8C86100110D03 /* Debug */,
+				031B2E5F1FC8C86100110D03 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		031B2E601FC8C86100110D03 /* Build configuration list for PBXNativeTarget "FitnessApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				031B2E611FC8C86100110D03 /* Debug */,
+				031B2E621FC8C86100110D03 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 031B2E441FC8C86100110D03 /* Project object */;
+}

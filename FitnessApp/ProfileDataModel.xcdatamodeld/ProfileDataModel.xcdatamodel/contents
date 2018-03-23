@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13772" systemVersion="17D47" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Profile" representedClassName="Profile" syncable="YES" codeGenerationType="class">
+        <attribute name="age" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="races" optional="YES" attributeType="Transformable" customClassName="[CheckpointRace]" syncable="YES"/>
+    </entity>
+    <entity name="Race" representedClassName="Race" syncable="YES" codeGenerationType="class">
+        <attribute name="checkpoints" optional="YES" attributeType="Transformable" customClassName="[MKPointAnnotation]" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Race" positionX="-63" positionY="-18" width="128" height="73"/>
+        <element name="Profile" positionX="106" positionY="-34" width="128" height="88"/>
+    </elements>
+</model>
