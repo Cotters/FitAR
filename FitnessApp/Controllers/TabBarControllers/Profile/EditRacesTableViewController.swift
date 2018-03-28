@@ -13,34 +13,28 @@ class EditRacesTableViewController: CustomTableViewController, FetchRacesDelegat
     var races: [Race] = []
     
     // MARK: - Service properties
-    var raceRetriever = RaceRetriever()
+    var raceService = RaceService()
     var delegate: SelectRaceDelegate?
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Add tableView and spinner
         setupView()
+        
         // Setup NavBar and editing
         navigationItem.title = "Edit Races"
-        navigationItem.rightBarButtonItem = editButtonItem
-        isEditing = false
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(toggleEdit)) //editButtonItem
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
         
         // Load races for the tableView
-        raceRetriever.delegate = self
-        raceRetriever.fetchRaces(ofType: .checkpoint, forUser: user)
-        // NOTE: Cannot edit challenge because then you could cheat. You can only decline them.
-        raceRetriever.fetchRaces(ofType: .poi, forUser: user)
+        raceService.delegate = self
+        raceService.fetchRaces(ofType: .checkpoint, for: user)
+        raceService.fetchRaces(ofType: .poi, for: user)
     }
     
-    override func setEditing(_ editing: Bool, animated: Bool) {
-        if(editing && !isEditing) {
-            tableView.setEditing(true, animated: true)
-            isEditing = true
-        } else if isEditing {
-            tableView.setEditing(false, animated: true)
-            isEditing = false
-        }
+    @objc func toggleEdit() {
+        tableView.setEditing(!tableView.isEditing, animated: true)
+        navigationItem.rightBarButtonItem?.title = tableView.isEditing ? "Done" : "Edit"
     }
     
     func loadRaces(_ races: [Race], ofType type: RaceType) {
@@ -78,11 +72,16 @@ class EditRacesTableViewController: CustomTableViewController, FetchRacesDelegat
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let race = races[indexPath.row]
-        raceRetriever.fetchCheckpoints(forRace: race)
+        raceService.fetchCheckpoints(for: race)
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
+            // Remove from Firebase
+            let race = races[indexPath.row]
+            self.raceService.delete(race: race, for: user)
+            
+            // Remove from tableView
             self.races.remove(at: indexPath.row)
             self.tableView.deleteRows(at: [indexPath], with: .automatic)
         }

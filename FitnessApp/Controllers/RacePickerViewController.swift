@@ -13,8 +13,6 @@ import FirebaseDatabase
 
 /// Used to fetch races and race data from Firebase
 protocol FetchRacesDelegate {
-    var races: [Race] { get set }
-//    var typedRacesDict: [RaceType:[Race]] { get set}
     func loadRaces(_ races: [Race], ofType type: RaceType)
     func loadCheckpoints(_ race: Race)
 }
@@ -31,7 +29,6 @@ class RacePickerViewController: CustomTableViewController, FetchRacesDelegate {
     }()
     
     // MARK: - Race properties
-    var races: [Race] = []
     var raceType: RaceType!
     // TODO: Could pass in the desired races to be viewed?
     // So for 'Show Challenges' pass in just .challenge for raceTypes below
@@ -39,7 +36,7 @@ class RacePickerViewController: CustomTableViewController, FetchRacesDelegate {
     var typedRacesDict: [RaceType:[Race]] = [:]
     
     // MARK: - Service properties
-    var raceRetriever = RaceRetriever()
+    var raceService = RaceService()
     var delegate: SelectRaceDelegate?
     
     override func viewDidLoad() {
@@ -55,10 +52,10 @@ class RacePickerViewController: CustomTableViewController, FetchRacesDelegate {
         segmentedControl.addTarget(self, action: #selector(refreshView), for: .valueChanged)
         
         // Load races for the tableView
-        raceRetriever.delegate = self
-        raceRetriever.fetchRaces(ofType: raceType, forUser: user)
-        raceRetriever.fetchRaces(ofType: .challenge, forUser: user)
-        raceRetriever.fetchRaces(ofType: .poi, forUser: user)
+        raceService.delegate = self
+        raceService.fetchRaces(ofType: raceType, for: user)
+        raceService.fetchRaces(ofType: .challenge, for: user)
+        raceService.fetchRaces(ofType: .poi, for: user)
         // TODO: Make a single function call that fetches all types.
     }
     
@@ -108,7 +105,7 @@ class RacePickerViewController: CustomTableViewController, FetchRacesDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // Try fetch the checkpoints for that race
         if let race = getRace(atIndex: indexPath.row) {
-            raceRetriever.fetchCheckpoints(forRace: race)
+            raceService.fetchCheckpoints(for: race)
             return
         }
         // If race is nil display appropriate message

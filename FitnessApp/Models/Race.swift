@@ -159,14 +159,14 @@ class Race: NSObject {
     
     // MARK:- Firebase Database Methods
     func store(forUserWithId userId: String) {
-        raceService.store(race: self, forUserWithId: userId)
+        raceService.store(race: self, userId: userId)
     }
     
     func updateBestTime(to time: Double, forUserWithId userId: String) {
         // Only update if it's better
         if let bestTime = self.bestTime {
             if time < bestTime {
-                raceService.saveTime(forRace: self, forUserWithId: userId, time: time)
+                raceService.saveTime(for: self, forUserWith: userId, time: time)
             }
         }
     }

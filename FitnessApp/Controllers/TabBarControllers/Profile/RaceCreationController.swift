@@ -96,7 +96,6 @@ class RaceCreationController: GameMapViewController {
         let pin = MKPointAnnotation()
         pin.coordinate = coord
         pin.title = "Checkpoint \(checkpoints.count)"
-        
         mapView.addAnnotation(pin)
         
         // Keep track of the current checkpoint

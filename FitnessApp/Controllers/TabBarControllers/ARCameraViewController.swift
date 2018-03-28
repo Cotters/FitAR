@@ -97,7 +97,7 @@ class ARCameraViewController: GameMapViewController, ARSCNViewDelegate {
         UIApplication.shared.isIdleTimerDisabled = true
     }
     
-    override func addDirections(from start: CLLocation, to destination: MKPointAnnotation) {
+    override func addDirections(from start: MKPointAnnotation, to destination: MKPointAnnotation) {
         // Remove all current scene nodes
         removeSCNNodes()
         
@@ -114,7 +114,7 @@ class ARCameraViewController: GameMapViewController, ARSCNViewDelegate {
         
         // TODO: Check altitude of pin - could put it 20-50m higher?
         // Add a pin over the checkpoint; only visible using camera
-        let destLoc = CLLocation(coordinate: destination.coordinate, altitude: start.altitude, horizontalAccuracy: kCLLocationAccuracyBest , verticalAccuracy: kCLLocationAccuracyBest, timestamp: start.timestamp)
+        let destLoc = CLLocation(coordinate: destination.coordinate, altitude: start.getLocation().altitude, horizontalAccuracy: kCLLocationAccuracyBest , verticalAccuracy: kCLLocationAccuracyBest, timestamp: start.getLocation().timestamp)
         self.addPin(at: destLoc, withTitle: destination.title!)
     }
     

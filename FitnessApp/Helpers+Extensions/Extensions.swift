@@ -259,6 +259,12 @@ public extension CLLocation {
             longitudeTranslation: longitudeTranslation,
             altitudeTranslation: altitudeTranslation)
     }
+    
+    public func toAnnotation() -> MKPointAnnotation {
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = self.coordinate
+        return annotation
+    }
 }
 
 extension MKMapView {
@@ -268,4 +274,11 @@ extension MKMapView {
         self.removeOverlays(self.overlays)
     }
     
+}
+
+extension MKPointAnnotation {
+    
+    public func getLocation() -> CLLocation {
+        return CLLocation(latitude: self.coordinate.latitude, longitude: self.coordinate.longitude)
+    }
 }

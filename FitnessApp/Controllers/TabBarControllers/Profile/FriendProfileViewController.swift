@@ -60,7 +60,7 @@ class FriendProfileViewController: UIViewController, ChallengeUserDelegate {
         // Stores the race in the friend's database profile
         let friendId = friend.getId()
         let raceService = RaceService()
-        raceService.store(race: race, forUserWithId: friendId)
+        raceService.store(race: race, userId: friendId)
         // TODO: Breaks the app - probs due to using ! on nil optionals
     }
 }

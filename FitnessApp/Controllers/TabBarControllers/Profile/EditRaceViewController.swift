@@ -10,8 +10,6 @@ import UIKit
 import MapKit
 import CoreLocation
 
-// ***** TODO: Change to race editor ******
-
 class EditRaceViewController: GameMapViewController {
     
     override func viewDidLoad() {
@@ -29,30 +27,26 @@ class EditRaceViewController: GameMapViewController {
         // TODO: Add map expansion (e.g. Tapping on the map should expand it)
         addUserLocationBtn()
         
-        // Add all checkpoints to map. DONE
-        // Allow them to be moved.
+        // Allow checkpoints to be moved.
         // Allow changing of name.
         
         // Safely retrieve checkpoints and add the route to the mapView
         guard let checkpointCount = race?.getNumberOfCheckpoints() else { return }
         for ind in 1..<checkpointCount {
-            guard let start = race?.checkpoints[ind-1].coordinate,
-                let end = race?.checkpoints[ind].coordinate else { return }
+            guard let start = race?.checkpoints[ind-1],
+                let end = race?.checkpoints[ind] else { return }
             self.addDirections(from: start, to: end)
         }
     }
     
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        // Do
+        let point = view.annotation as! MKPointAnnotation
+            print(point.title ?? "Nill")
+    }
+    
     override func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
         // Do nothing in race editor
-    }
-    
-    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        mapView.resignFirstResponder()
-    }
-    
-    func addCircle(onCheckpoint point: MKPointAnnotation) {
-        let circle = MKCircle(center: point.coordinate, radius: 100)
-        mapView.add(circle)
     }
     
     @objc func saveRace() {

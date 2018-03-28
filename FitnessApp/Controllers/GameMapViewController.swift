@@ -169,7 +169,7 @@ class GameMapViewController: UserContainedViewController, CLLocationManagerDeleg
         }
         // Remove all current pins/lines
         mapView.clear()
-        addDirections(from: userLoc, to: destPin)
+        addDirections(from: userLoc.toAnnotation(), to: destPin)
     }
     
     @objc func nextCheckpoint() {
@@ -197,43 +197,15 @@ class GameMapViewController: UserContainedViewController, CLLocationManagerDeleg
         monitorCheckpoint()
     }
     
-    func addDirections(from start: CLLocation, to destination: MKPointAnnotation) {
+    func addDirections(from start: MKPointAnnotation, to destination: MKPointAnnotation) {
         // Add the current checkpoint to the map
         mapView.addAnnotation(destination)
         
         // Get source and destination info for direction request
-        guard let destCoords = race?.getLocation(ofPoint: destination) else { return }
-        let sourceItem = MKMapItem(placemark: MKPlacemark(coordinate: start.coordinate))
+        let sourceCoords = start.getLocation()
+        let destCoords = destination.getLocation()
+        let sourceItem = MKMapItem(placemark: MKPlacemark(coordinate: sourceCoords.coordinate))
         let destItem = MKMapItem(placemark: MKPlacemark(coordinate: destCoords.coordinate))
-        
-        // Show direction on map
-        let dirRequest = MKDirectionsRequest()
-        dirRequest.source = sourceItem
-        dirRequest.destination = destItem
-        dirRequest.transportType = .walking
-        
-        // Perform a direction request
-        let directions = MKDirections(request: dirRequest)
-        directions.calculate { (response, error) in
-            guard let response = response else {
-                if error != nil {
-                    print(error!)
-                }
-                return
-            }
-            
-            // Add the route to the MapView
-            guard let route = response.routes.first else { return }
-            self.mapView.add(route.polyline, level: .aboveRoads)
-        }
-    }
-    
-    func addDirections(from start: CLLocationCoordinate2D, to end: CLLocationCoordinate2D) {
-        let sourceItem = MKMapItem(placemark: MKPlacemark(coordinate: start))
-        let destItem = MKMapItem(placemark: MKPlacemark(coordinate: end))
-        
-        // Add the current checkpoint to the map
-        mapView.addAnnotation(destItem.placemark)
         
         // Show direction on map
         let dirRequest = MKDirectionsRequest()
