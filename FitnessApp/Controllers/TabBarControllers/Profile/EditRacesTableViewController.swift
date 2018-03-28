@@ -29,15 +29,17 @@ class EditRacesTableViewController: CustomTableViewController, FetchRacesDelegat
         // Load races for the tableView
         raceRetriever.delegate = self
         raceRetriever.fetchRaces(ofType: .checkpoint, forUser: user)
-        raceRetriever.fetchRaces(ofType: .challenge, forUser: user) // or not? Can deny them
+        // NOTE: Cannot edit challenge because then you could cheat. You can only decline them.
         raceRetriever.fetchRaces(ofType: .poi, forUser: user)
     }
     
     override func setEditing(_ editing: Bool, animated: Bool) {
         if(editing && !isEditing) {
             tableView.setEditing(true, animated: true)
-        }else{
+            isEditing = true
+        } else if isEditing {
             tableView.setEditing(false, animated: true)
+            isEditing = false
         }
     }
     
@@ -47,8 +49,10 @@ class EditRacesTableViewController: CustomTableViewController, FetchRacesDelegat
     }
     
     func loadCheckpoints(_ race: Race) {
-        delegate?.didSelectRace(race)
-        // TODO: Present race edit view
+        // Checkpoints have been fetched, so present the raceEditor
+        let raceEditor = EditRaceViewController()
+        raceEditor.race = race
+        navigationController?.pushViewController(raceEditor, animated: true)
     }
     
     // MARK: - TableView methods
@@ -68,13 +72,13 @@ class EditRacesTableViewController: CustomTableViewController, FetchRacesDelegat
         let cell = tableView.dequeueReusableCell(withIdentifier: "RaceCell", for: indexPath) as! RaceTableViewCell
         
         let race = races[indexPath.row]
-        cell.addRaceDetails(name: race.getName(), distance: race.getDistance(), rating: race.getRating())
+        cell.addRaceDetails(race)
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // TODO: Allow edit race
-        print(indexPath.item)
+        let race = races[indexPath.row]
+        raceRetriever.fetchCheckpoints(forRace: race)
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {

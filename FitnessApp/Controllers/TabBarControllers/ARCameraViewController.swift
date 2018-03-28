@@ -97,7 +97,7 @@ class ARCameraViewController: GameMapViewController, ARSCNViewDelegate {
         UIApplication.shared.isIdleTimerDisabled = true
     }
     
-    override func addDirections(start: CLLocation, destination: MKPointAnnotation) {
+    override func addDirections(from start: CLLocation, to destination: MKPointAnnotation) {
         // Remove all current scene nodes
         removeSCNNodes()
         

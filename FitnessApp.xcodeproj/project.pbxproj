@@ -32,9 +32,9 @@
 		03B9CB5D2046DC290033A214 /* UserContainedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B9CB5C2046DC290033A214 /* UserContainedViewController.swift */; };
 		03B9CB5F2046DC910033A214 /* Race.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B9CB5E2046DC910033A214 /* Race.swift */; };
 		03B9CB63204747610033A214 /* RaceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B9CB622047475F0033A214 /* RaceTableViewCell.swift */; };
+		03C52F30206BB119003C2F89 /* EditRaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C52F2F206BB119003C2F89 /* EditRaceViewController.swift */; };
 		03C5EEF72035C00500E335EB /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03C5EEF62035C00500E335EB /* MapKit.framework */; };
 		03C5EEF92035C02100E335EB /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03C5EEF82035C02100E335EB /* HealthKit.framework */; };
-		03C5EEFC2035CDBB00E335EB /* RaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C5EEFB2035CDBB00E335EB /* RaceViewController.swift */; };
 		03C5EEFE2035CEFB00E335EB /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C5EEFD2035CEFB00E335EB /* MapViewController.swift */; };
 		03C5EF2420360E3000E335EB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 03C5EF2320360E3000E335EB /* GoogleService-Info.plist */; };
 		03C5EF26203840C600E335EB /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C5EF25203840C500E335EB /* LoginView.swift */; };
@@ -74,10 +74,10 @@
 		03B9CB5C2046DC290033A214 /* UserContainedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserContainedViewController.swift; sourceTree = "<group>"; };
 		03B9CB5E2046DC910033A214 /* Race.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Race.swift; sourceTree = "<group>"; };
 		03B9CB622047475F0033A214 /* RaceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaceTableViewCell.swift; sourceTree = "<group>"; };
+		03C52F2F206BB119003C2F89 /* EditRaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditRaceViewController.swift; sourceTree = "<group>"; };
 		03C5EEF62035C00500E335EB /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		03C5EEF82035C02100E335EB /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		03C5EEFA2035C02100E335EB /* FitnessApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FitnessApp.entitlements; sourceTree = "<group>"; };
-		03C5EEFB2035CDBB00E335EB /* RaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaceViewController.swift; sourceTree = "<group>"; };
 		03C5EEFD2035CEFB00E335EB /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		03C5EF2320360E3000E335EB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		03C5EF25203840C500E335EB /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -197,10 +197,10 @@
 				031B2E6B1FC8C93300110D03 /* ProfileViewController.swift */,
 				034E9011202F9B2B0014A017 /* RaceCreationController.swift */,
 				03F838882064588700D76E03 /* EditRacesTableViewController.swift */,
+				03C52F2F206BB119003C2F89 /* EditRaceViewController.swift */,
 				03B9CB622047475F0033A214 /* RaceTableViewCell.swift */,
 				039732FC20532C220091548C /* FriendsTableViewController.swift */,
 				0374956C2055C9F100D6FA32 /* FriendProfileViewController.swift */,
-				03C5EEFB2035CDBB00E335EB /* RaceViewController.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -390,7 +390,6 @@
 				031B2E6F1FC8C9B700110D03 /* Extensions.swift in Sources */,
 				03B9CB63204747610033A214 /* RaceTableViewCell.swift in Sources */,
 				039CADA3204AE23F00CCF2E0 /* RaceRetriever.swift in Sources */,
-				03C5EEFC2035CDBB00E335EB /* RaceViewController.swift in Sources */,
 				0312CBC8204CA93B00347CF2 /* GameMapViewController.swift in Sources */,
 				03C5EF28203840D200E335EB /* RegisterViewController.swift in Sources */,
 				03C5EEFE2035CEFB00E335EB /* MapViewController.swift in Sources */,
@@ -402,6 +401,7 @@
 				03B9CB5B2046D9290033A214 /* RacePickerViewController.swift in Sources */,
 				031B2E6C1FC8C93300110D03 /* ProfileViewController.swift in Sources */,
 				0312CBCC204CBB7300347CF2 /* BaseNode.swift in Sources */,
+				03C52F30206BB119003C2F89 /* EditRaceViewController.swift in Sources */,
 				031B2E501FC8C86100110D03 /* AppDelegate.swift in Sources */,
 				03F8388E206462FB00D76E03 /* MatrixHelper.swift in Sources */,
 				03B9CB5D2046DC290033A214 /* UserContainedViewController.swift in Sources */,

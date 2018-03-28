@@ -54,8 +54,12 @@ class RaceTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    public func addRaceDetails(name: String, distance: Double, rating: Double) {
-        self.nameLbl.text = name
+    public func addRaceDetails(_ race: Race) {
+        // Retrieve details
+        let distance = race.getDistance()
+        let rating = race.getRating()
+        
+        self.nameLbl.text = race.getName()
         self.distanceLbl.text = "\(Int(distance)) meters"
         var starRating = "Rating: "
         if rating < 1 {

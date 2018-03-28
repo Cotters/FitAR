@@ -33,6 +33,8 @@ class RacePickerViewController: CustomTableViewController, FetchRacesDelegate {
     // MARK: - Race properties
     var races: [Race] = []
     var raceType: RaceType!
+    // TODO: Could pass in the desired races to be viewed?
+    // So for 'Show Challenges' pass in just .challenge for raceTypes below
     var raceTypes: [RaceType] = [.checkpoint, .challenge, .poi]
     var typedRacesDict: [RaceType:[Race]] = [:]
     
@@ -96,7 +98,7 @@ class RacePickerViewController: CustomTableViewController, FetchRacesDelegate {
         
         // Safely retrieve any races, otherwise return an empty cell
         if let race = getRace(atIndex: indexPath.row) {
-            cell.addRaceDetails(name: race.getName(), distance: race.getDistance(), rating: race.getRating())
+            cell.addRaceDetails(race)
             return cell
         }
         

@@ -139,7 +139,7 @@ class Race: NSObject {
         var distance: Double = 0
         
         if checkpoints.count > 1 {
-            for ind in 1...checkpoints.count-1 {
+            for ind in 1..<checkpoints.count {
                 let dist = getDistance(from: checkpoints[ind-1], to: checkpoints[ind])
                 distance += dist
             }
