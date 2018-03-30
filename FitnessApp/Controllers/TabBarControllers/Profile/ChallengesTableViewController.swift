@@ -1,36 +1,34 @@
 //
-//  EditRacesTableViewController.swift
+//  ChallengesTableViewController.swift
 //  FitnessApp
 //
-//  Created by Josh Cotterell on 22/03/2018.
+//  Created by Bridget Carroll on 28/03/2018.
 //  Copyright © 2018 Josh Cotterell. All rights reserved.
 //
 
 import UIKit
 
-class EditRacesTableViewController: CustomTableViewController, FetchRacesDelegate {
+class ChallengesTableViewController: CustomTableViewController, FetchRacesDelegate {
     
-    var races: [Race] = []
+    var challenges: [Race] = []
     
     // MARK: - Service properties
     var raceService = RaceService()
     var delegate: SelectRaceDelegate?
     
     override func viewDidLoad() {
-        super.viewDidLoad()
         // Add tableView and spinner
         setupView()
         
         // Setup NavBar and editing
-        navigationItem.title = "Edit Races"
+        navigationItem.title = "Challenges"
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(toggleEdit))
         // Shows the user how to cancel any modifications made in the editRaceVC
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: nil)
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
         
         // Load races for the tableView
         raceService.delegate = self
-        raceService.fetchRaces(ofType: .checkpoint, for: user)
-        raceService.fetchRaces(ofType: .poi, for: user)
+        raceService.fetchRaces(ofType: .challenge, for: user)
     }
     
     @objc func toggleEdit() {
@@ -40,20 +38,17 @@ class EditRacesTableViewController: CustomTableViewController, FetchRacesDelegat
     
     // MARK: - FetchRacesDelegate methods
     func loadRaces(_ races: [Race], ofType type: RaceType) {
-        self.races.append(contentsOf: races)
-        refreshView()
+        self.challenges = races
     }
     
     func loadCheckpoints(for race: Race) {
-        // Checkpoints have been fetched, so present the raceEditor
-        let raceEditor = EditRaceViewController()
-        raceEditor.race = race
-        navigationController?.pushViewController(raceEditor, animated: true)
+        // ** For preview? - Accept or reject scene?
+        print("Wooo!")
     }
     
     // MARK: - TableViewDelegate methods
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return races.count
+        return challenges.count
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -67,27 +62,25 @@ class EditRacesTableViewController: CustomTableViewController, FetchRacesDelegat
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RaceCell", for: indexPath) as! RaceTableViewCell
         
-        let race = races[indexPath.row]
+        let race = challenges[indexPath.row]
         cell.addRaceDetails(race)
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let race = races[indexPath.row]
-        raceService.fetchCheckpoints(for: race)
+        let challenge = challenges[indexPath.row]
+        raceService.fetchCheckpoints(for: challenge)
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Remove from Firebase
-            let race = races[indexPath.row]
-            self.raceService.delete(race: race, for: user)
+            let challenge = challenges[indexPath.row]
+            self.raceService.delete(race: challenge, for: user)
             
             // Remove from tableView
-            self.races.remove(at: indexPath.row)
+            self.challenges.remove(at: indexPath.row)
             self.tableView.deleteRows(at: [indexPath], with: .automatic)
         }
     }
-    
-    
 }

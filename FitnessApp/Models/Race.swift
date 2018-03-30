@@ -19,103 +19,51 @@ enum RaceType: String {
     case all // All race types
 }
 
+protocol CheckpointRace {
+    var type: RaceType { get }
+    var name: String { get set }
+    var id: String { get set }
+    var rating: Double { get set }
+    var bestTime: Double { get set }
+    var distance: Double { get set }
+    var checkpoints: [MKPointAnnotation] { get set }
+}
+
 /// A collection of real world checkpoints the user must get to in order to finish.
-class Race: NSObject {
+final class Race: CheckpointRace {
     
     // MARK: - Properties
-    // TODO: Make optional and safely return
-    var type: RaceType!
-    var name: String!
-    var id: String!
-    var rating: Double?
-    var checkpoints: [MKPointAnnotation] = []
-    var bestTime: Double?
-    var distance: Double?
-    
+    private var raceType: RaceType
+    var type: RaceType {
+        return raceType
+    }
+    var name: String
+    var id: String
+    var rating: Double
+    var bestTime: Double
+    var distance: Double
+    var checkpoints: [MKPointAnnotation] {
+        didSet {
+            distance = calculateTotalDistance()
+        }
+    }
+ 
     let raceService = RaceService()
     
-    
-    // MARK:- Init Methods
+    // MARK: - Init Methods
     init(type: RaceType, name: String, id: String = "", rating: Double = 0, checkpoints: [MKPointAnnotation] = [], distance: Double = 0, bestTime: Double = 0) {
-        super.init()
-        self.type = type
+        self.raceType = type
         self.name = name
         self.id = id
         self.rating = rating
         self.bestTime = bestTime
-        self.checkpoints = checkpoints
-        self.distance = distance <= 0 ? self.getTotalDistance() : distance
-    }
-    
-    // MARK:- Getters & Setters
-    final func addCheckpoint(point: MKPointAnnotation) {
-        checkpoints.append(point)
-    }
-    
-    final func setType(to type: RaceType) {
-        self.type = type
-    }
-    
-    final func getType() -> RaceType {
-        return type
-    }
-    
-    final func setName(to name: String) {
-        self.name = name
-    }
-    
-    final func getName() -> String {
-        return name
-    }
-    
-    final func setId(to id: String) {
-        self.id = id
-    }
-    
-    final func getId() -> String {
-        return id
-    }
-    
-    final func setRating(to score: Double) {
-        self.rating = score
-    }
-    
-    final func getRating() -> Double {
-        guard let rating = self.rating else {
-            return 0
-        }
-        return rating
-    }
-    
-    final func setDisntance(_ distance: Double) {
         self.distance = distance
-    }
-    
-    final func getDistance() -> Double {
-        guard let distance = self.distance else {
-            return 0
-        }
-        return distance
-    }
-    
-    func getStart() -> MKPointAnnotation? {
-        return checkpoints.first
-    }
-    
-    func getEnd() -> MKPointAnnotation? {
-        return checkpoints.last
-    }
-    
-    final func setCheckpoints(_ checkpoints: [MKPointAnnotation]) {
         self.checkpoints = checkpoints
     }
     
-    final func getCheckpoints() -> [MKPointAnnotation] {
-        return checkpoints
-    }
-    
-    func getNumberOfCheckpoints() -> Int {
-        return checkpoints.count
+    // MARK: - Getters & Setters
+    final func addCheckpoint(_ point: MKPointAnnotation) {
+        checkpoints.append(point)
     }
     
     final func getLocation(ofPoint point: MKPointAnnotation) -> CLLocation {
@@ -135,7 +83,7 @@ class Race: NSObject {
         return getDistance(from: lastPoint, to: dest)
     }
     
-    func getTotalDistance() -> Double {
+    func calculateTotalDistance() -> Double {
         var distance: Double = 0
         
         if checkpoints.count > 1 {
@@ -152,37 +100,20 @@ class Race: NSObject {
         return checkpoints.indices.contains(index) ? checkpoints[index] : nil
     }
     
-    func getIndexOf(checkpoint point: MKPointAnnotation) -> Int {
-        return checkpoints.index(of: point)!
+    func getIndexOf(checkpoint: MKPointAnnotation) -> Int? {
+        return checkpoints.index(of: checkpoint)
     }
     
     
-    // MARK:- Firebase Database Methods
+    // MARK: - Firebase Database Methods
     func store(forUserWithId userId: String) {
         raceService.store(race: self, userId: userId)
     }
     
     func updateBestTime(to time: Double, forUserWithId userId: String) {
         // Only update if it's better
-        if let bestTime = self.bestTime {
-            if time < bestTime {
-                raceService.saveTime(for: self, forUserWith: userId, time: time)
-            }
+        if time < bestTime {
+            raceService.save(time: time, for: self, using: userId)
         }
     }
-    
-    // MARK: - Static helper functions
-    // (mainly for race creator)
-    static func getDistance(from start: MKPointAnnotation?, to end: MKPointAnnotation) -> Double {
-        // If start is null then we assume the end is the first point - so return 0
-        guard let start = start else { return 0.0 }
-        let p1 = getLocation(ofPoint: start)
-        let p2 = getLocation(ofPoint: end)
-        return p1.distance(from: p2)
-    }
-    
-    static func getLocation(ofPoint point: MKPointAnnotation) -> CLLocation {
-        return CLLocation(latitude: point.coordinate.latitude, longitude: point.coordinate.longitude)
-    }
-    
 }

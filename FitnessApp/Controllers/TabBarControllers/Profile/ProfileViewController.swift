@@ -148,8 +148,8 @@ class ProfileViewController: UserContainedViewController, SelectRaceDelegate {
     }
     
     @objc func showChallenges() {
-//        let challengeTableView = ChallengeTableViewController()
-//        self.navigationController?.pushViewController(challengeTableView, animated: true)
+        let challengesTableView = ChallengesTableViewController()
+        self.navigationController?.pushViewController(challengesTableView, animated: true)
     }
     
     @objc func logout() {

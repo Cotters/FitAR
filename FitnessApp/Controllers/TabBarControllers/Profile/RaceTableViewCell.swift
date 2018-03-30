@@ -56,10 +56,10 @@ class RaceTableViewCell: UITableViewCell {
     
     public func addRaceDetails(_ race: Race) {
         // Retrieve details
-        let distance = race.getDistance()
-        let rating = race.getRating()
+        let distance = race.distance
+        let rating = race.rating
         
-        self.nameLbl.text = race.getName()
+        self.nameLbl.text = race.name
         self.distanceLbl.text = "\(Int(distance)) meters"
         var starRating = "Rating: "
         if rating < 1 {

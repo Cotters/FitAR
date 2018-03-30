@@ -28,6 +28,7 @@ class MapController: GameMapViewController {
         // Add relevant items to the view
         addMapView() // Full span
         addRaceSelectBtn()
+        addRaceResetBtn()
         addUserLocationBtn()
         
         mapView.addSubview(progressBtn)

@@ -13,7 +13,6 @@
 		031B2E501FC8C86100110D03 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031B2E4F1FC8C86100110D03 /* AppDelegate.swift */; };
 		031B2E521FC8C86100110D03 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 031B2E511FC8C86100110D03 /* art.scnassets */; };
 		031B2E541FC8C86100110D03 /* ARCameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031B2E531FC8C86100110D03 /* ARCameraViewController.swift */; };
-		031B2E571FC8C86100110D03 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 031B2E551FC8C86100110D03 /* Main.storyboard */; };
 		031B2E591FC8C86100110D03 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 031B2E581FC8C86100110D03 /* Assets.xcassets */; };
 		031B2E5C1FC8C86100110D03 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 031B2E5A1FC8C86100110D03 /* LaunchScreen.storyboard */; };
 		031B2E641FC8C8A200110D03 /* CustomTabBarControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031B2E631FC8C8A200110D03 /* CustomTabBarControllers.swift */; };
@@ -43,6 +42,8 @@
 		03F8388B2064617B00D76E03 /* CustomTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F8388A2064617B00D76E03 /* CustomTableViewController.swift */; };
 		03F8388E206462FB00D76E03 /* MatrixHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F8388D206462FB00D76E03 /* MatrixHelper.swift */; };
 		931EE025866DC3866984D5F9 /* Pods_FitnessApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0BFDBCD35023AB5220917AC /* Pods_FitnessApp.framework */; };
+		F9143509206C37010089AC9F /* ChallengesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9143508206C37000089AC9F /* ChallengesTableViewController.swift */; };
+		F914350B206E6D610089AC9F /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F914350A206E6D610089AC9F /* HomeCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,7 +54,6 @@
 		031B2E4F1FC8C86100110D03 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		031B2E511FC8C86100110D03 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
 		031B2E531FC8C86100110D03 /* ARCameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARCameraViewController.swift; sourceTree = "<group>"; };
-		031B2E561FC8C86100110D03 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		031B2E581FC8C86100110D03 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		031B2E5B1FC8C86100110D03 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		031B2E5D1FC8C86100110D03 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -87,6 +87,8 @@
 		44BAD783F21D9F5006E1B928 /* Pods-FitnessApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FitnessApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-FitnessApp/Pods-FitnessApp.release.xcconfig"; sourceTree = "<group>"; };
 		BDD3597688BAD2F5FF2B2980 /* Pods-FitnessApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FitnessApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FitnessApp/Pods-FitnessApp.debug.xcconfig"; sourceTree = "<group>"; };
 		C0BFDBCD35023AB5220917AC /* Pods_FitnessApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FitnessApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F9143508206C37000089AC9F /* ChallengesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengesTableViewController.swift; sourceTree = "<group>"; };
+		F914350A206E6D610089AC9F /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeCollectionViewCell.swift; path = FitnessApp/Controllers/TabBarControllers/HomeCollectionViewCell.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,7 +133,6 @@
 				039CADA6204AFFDD00CCF2E0 /* Models */,
 				03F8388C2064624A00D76E03 /* Helpers+Extensions */,
 				031B2E6D1FC8C93800110D03 /* Controllers */,
-				031B2E551FC8C86100110D03 /* Main.storyboard */,
 				031B2E581FC8C86100110D03 /* Assets.xcassets */,
 				031B2E5A1FC8C86100110D03 /* LaunchScreen.storyboard */,
 				031B2E5D1FC8C86100110D03 /* Info.plist */,
@@ -196,8 +197,10 @@
 				03F838882064588700D76E03 /* EditRacesTableViewController.swift */,
 				03C52F2F206BB119003C2F89 /* EditRaceViewController.swift */,
 				03B9CB622047475F0033A214 /* RaceTableViewCell.swift */,
+				F914350A206E6D610089AC9F /* HomeCollectionViewCell.swift */,
 				039732FC20532C220091548C /* FriendsTableViewController.swift */,
 				0374956C2055C9F100D6FA32 /* FriendProfileViewController.swift */,
+				F9143508206C37000089AC9F /* ChallengesTableViewController.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -304,7 +307,6 @@
 				031B2E5C1FC8C86100110D03 /* LaunchScreen.storyboard in Resources */,
 				03C5EF2420360E3000E335EB /* GoogleService-Info.plist in Resources */,
 				031B2E591FC8C86100110D03 /* Assets.xcassets in Resources */,
-				031B2E571FC8C86100110D03 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -387,6 +389,7 @@
 				031B2E6F1FC8C9B700110D03 /* Extensions.swift in Sources */,
 				03B9CB63204747610033A214 /* RaceTableViewCell.swift in Sources */,
 				0312CBC8204CA93B00347CF2 /* GameMapViewController.swift in Sources */,
+				F9143509206C37010089AC9F /* ChallengesTableViewController.swift in Sources */,
 				03C5EF28203840D200E335EB /* RegisterViewController.swift in Sources */,
 				03C5EEFE2035CEFB00E335EB /* MapViewController.swift in Sources */,
 				031B2E541FC8C86100110D03 /* ARCameraViewController.swift in Sources */,
@@ -403,6 +406,7 @@
 				03B9CB5D2046DC290033A214 /* UserContainedViewController.swift in Sources */,
 				03F838892064588700D76E03 /* EditRacesTableViewController.swift in Sources */,
 				034E9012202F9B2B0014A017 /* RaceCreationController.swift in Sources */,
+				F914350B206E6D610089AC9F /* HomeCollectionViewCell.swift in Sources */,
 				039732FD20532C220091548C /* FriendsTableViewController.swift in Sources */,
 				031B2E6A1FC8C92300110D03 /* HomeViewController.swift in Sources */,
 			);
@@ -411,14 +415,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		031B2E551FC8C86100110D03 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				031B2E561FC8C86100110D03 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		031B2E5A1FC8C86100110D03 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -543,6 +539,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = FitnessApp/FitnessApp.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Joshua Cotterell (42HBCG4893)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 86997N65SQ;
 				INFOPLIST_FILE = FitnessApp/Info.plist;
@@ -550,6 +548,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cotters.FitnessApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -561,6 +560,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = FitnessApp/FitnessApp.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Joshua Cotterell (42HBCG4893)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 86997N65SQ;
 				INFOPLIST_FILE = FitnessApp/Info.plist;
@@ -568,6 +569,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cotters.FitnessApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

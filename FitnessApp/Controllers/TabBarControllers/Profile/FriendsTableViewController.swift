@@ -87,15 +87,12 @@ class FriendsTableViewController: CustomTableViewController {
     }
     
     @objc func addFriend() {
-        let alert = UIAlertController(title: "Add friend", message: "Enter your friends username", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Add friend", message: "Enter your friend's username", preferredStyle: .alert)
         alert.addTextField { (textfield) in
             textfield.placeholder = "Username"
             textfield.autocapitalizationType = UITextAutocapitalizationType.sentences
         }
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: {(action) in
-            // Dismiss view if name is cancelled
-            self.navigationController?.popViewController(animated: true)
-        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         alert.addAction(UIAlertAction(title: "Done", style: .default, handler: { (action) in
             guard let tf = alert.textFields?.first else { return }
             print(tf.text)

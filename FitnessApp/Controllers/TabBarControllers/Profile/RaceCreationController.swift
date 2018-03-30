@@ -123,7 +123,7 @@ class RaceCreationController: GameMapViewController {
         // Safely check the total distance
         if let last = checkpoints.last {
             // Show total distance
-            totalDistance += Race.getDistance(from: last, to: checkpoint)
+            totalDistance += last.getDistance(to: checkpoint)
             navigationItem.title = "Total: \(Int(totalDistance)) meters"
         }
         
@@ -138,7 +138,7 @@ class RaceCreationController: GameMapViewController {
         }
     }
     
-    // Not used - is it useful?
+    // TODO: - Not used - is it useful?
     func drawLine(from start: MKPointAnnotation, to finish: MKPointAnnotation) {
         
         let source = MKMapItem(placemark: MKPlacemark(coordinate: start.coordinate))
@@ -178,6 +178,7 @@ class RaceCreationController: GameMapViewController {
         
         // Save the race - note: raceId will be set later using a random string
         let race = Race(type: raceType, name: raceName, checkpoints: checkpoints)
+        race.distance = race.calculateTotalDistance()
         // Check if challenge, else store in the user's profile
         if raceType == .challenge {
             // Return to challenged user's profile

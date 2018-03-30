@@ -34,6 +34,15 @@ class GameMapViewController: UserContainedViewController, CLLocationManagerDeleg
         return btn
     }()
     
+    let cancelRaceBtn: UIButton = {
+        let btn = UIButton()
+        btn.setTitle("Cancel race", for: .normal)
+        btn.backgroundColor = .errorRed
+        btn.tintColor = .white
+        btn.addTarget(self, action: #selector(resetScene), for: .touchUpInside)
+        return btn
+    }()
+    
     let userLocationBtn: UIButton = {
         let btn = UIButton()
         btn.setImage(#imageLiteral(resourceName: "user_location"), for: .normal)
@@ -44,7 +53,7 @@ class GameMapViewController: UserContainedViewController, CLLocationManagerDeleg
     var race: Race? {
         didSet {
             if race != nil {
-                guard let startPin = race?.getStart() else { return }
+                guard let startPin = race?.checkpoints.first else { return }
                 showUserDirections(to: startPin)
             }
         }
@@ -58,6 +67,9 @@ class GameMapViewController: UserContainedViewController, CLLocationManagerDeleg
     // Used to animate the select race and progress race buttons
     var raceSelectBtnAnchor: NSLayoutConstraint!
     var raceSelectBtnVisible = true
+    
+    var cancelRaceBtnAnchor: NSLayoutConstraint!
+    var cancelRaceBtnVisible = false
     
     var timer: Date!
     var raceTime: Double!
@@ -100,6 +112,7 @@ class GameMapViewController: UserContainedViewController, CLLocationManagerDeleg
         mapView.anchor(topAnchor, bottom: bottom, left: left, right: right, topConstant: 0, bottomConstant: 0, leftConstant: 0, rightConstant: 0, width: width, height: height)
     }
     
+    /// Animate the race select button.
     func addRaceSelectBtn() {
         // Used to animate the 'select race' button in and out of view
         view.addSubview(raceSelectBtn)
@@ -107,6 +120,15 @@ class GameMapViewController: UserContainedViewController, CLLocationManagerDeleg
         raceSelectBtnAnchor = raceSelectBtn.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -15)
         NSLayoutConstraint.activate([raceSelectBtnAnchor])
         raceSelectBtn.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+    }
+    
+    /// Animate the cancel race button.
+    func addRaceResetBtn() {
+        view.addSubview(cancelRaceBtn)
+        cancelRaceBtn.anchor(nil, bottom: nil, left: nil, right: nil, topConstant: 0, bottomConstant: 0, leftConstant: 0, rightConstant: 0, width: view.frame.width*0.75, height: 30)
+        cancelRaceBtnAnchor = cancelRaceBtn.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 50)
+        NSLayoutConstraint.activate([cancelRaceBtnAnchor])
+        cancelRaceBtn.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
     }
     
     func addUserLocationBtn() {
@@ -131,17 +153,32 @@ class GameMapViewController: UserContainedViewController, CLLocationManagerDeleg
         }
     }
     
+    func toggleRaceResetBtn(show: Bool) {
+        // Show/Hide the cancel race button using animation
+        if show && !cancelRaceBtnVisible {
+            self.cancelRaceBtnAnchor.constant = -15
+            cancelRaceBtnVisible = true
+        } else if !show && cancelRaceBtnVisible {
+            self.cancelRaceBtnAnchor.constant = 50
+            cancelRaceBtnVisible = false
+        }
+        
+        UIView.animate(withDuration: 0.5) {
+            self.view.layoutIfNeeded()
+        }
+    }
+    
     // MARK: - Button selector methods
     @objc func findUserLocation() {
         guard let sourceCoords = locationManager.location?.coordinate else {
             // Request user location sharing
             if CLLocationManager.authorizationStatus() == .denied {
-                showSettingsAlert(withMessage: "You must enable location sharing to use this app.")
+                showSettingsAlert()
             }
             print("Error finding user location")
             return
         }
-        let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
+        let span = MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005)
         let region = MKCoordinateRegion(center: sourceCoords, span: span)
         mapView.setRegion(region, animated: true)
     }
@@ -158,6 +195,8 @@ class GameMapViewController: UserContainedViewController, CLLocationManagerDeleg
         self.race = race
         // Hide the race selection button
         toggleRaceSelectBtn(show: false)
+        // Show race cancel button
+        toggleRaceResetBtn(show: true)
     }
     
     func showUserDirections(to destPin: MKPointAnnotation) {
@@ -165,6 +204,7 @@ class GameMapViewController: UserContainedViewController, CLLocationManagerDeleg
         guard let userLoc = locationManager.location else {
             // TODO: Figure out what to do in this event
             print("Error finding user location")
+            showSettingsAlert()
             return
         }
         // Remove all current pins/lines
@@ -240,9 +280,8 @@ class GameMapViewController: UserContainedViewController, CLLocationManagerDeleg
     func checkFinish() {
         guard let race = self.race else { return }
         // If the user has progressed to the end or past the race, finish.
-        if (currentCheckpointCount >= race.getNumberOfCheckpoints()) {
+        if (currentCheckpointCount >= race.checkpoints.count) {
             raceComplete()
-            // TODO: Show a view that displays: Best time, Current time, # of times completed etc.
             return
         }
     }
@@ -252,14 +291,24 @@ class GameMapViewController: UserContainedViewController, CLLocationManagerDeleg
         // Store best time
         raceTime  = Date().timeIntervalSince(timer)
         race?.updateBestTime(to: raceTime, forUserWithId: user.uid)
-        // Each scene will do this differently, so call their method
+        // Each scene will reset differently, so call a method that can be overridden
         resetScene()
+        // Show's view where the user can rate, and see details about their performance
+        showEndRaceView()
+    }
+    
+    func showEndRaceView() {
+        // TODO: Show a view that displays: Best time, Current time, # of times completed, rating.
+        let endView = EndRaceViewController()
+        endView.raceTime = Int(raceTime)
+        show(endView, sender: self)
     }
     
     /// Resets the scene ready for a new race
-    func resetScene() {
+    @objc func resetScene() {
         mapView.clear()
         // Reset the view and race
+        toggleRaceResetBtn(show: false)
         toggleRaceSelectBtn(show: true)
         currentCheckpointCount = 0
         race = nil
@@ -299,4 +348,96 @@ class GameMapViewController: UserContainedViewController, CLLocationManagerDeleg
         showMessage(withTitle: "Congrats", message: "You arrived at a checkpoint!")
     }
     
+    func showSettingsAlert() {
+        let locationSettingsURL = URL(string: "App-Prefs:root=Privacy&path=LOCATION")
+        showSettingsAlert(withMessage: "You must enable location sharing to use this app.", and: locationSettingsURL)
+    }
+    
 }
+
+class EndRaceViewController: UIViewController {
+    
+    let dismissBtn: UIButton = {
+        let btn = UIButton()
+        btn.setTitle("Dismiss", for: .normal)
+        btn.addTarget(self, action:#selector(dismissView), for: .touchUpInside)
+        btn.setTitleColor(.systemBlue, for: .normal)
+        return btn
+    }()
+    
+    let raceTimeLbl: UILabel = {
+        let lbl = UILabel()
+        lbl.text = "Time elapsed: error"
+        lbl.font = UIFont.systemFont(ofSize: 16)
+        return lbl
+    }()
+    
+    var raceTime: Int = 0 {
+        didSet {
+            raceTimeLbl.text = "Time elapsed: " + raceTime.timeString
+        }
+    }
+    
+    let bestTimeLbl: UILabel = {
+        let lbl = UILabel()
+        lbl.text = "Best time: error"
+        lbl.font = UIFont.systemFont(ofSize: 16)
+        return lbl
+    }()
+    
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        view.backgroundColor = .white
+        
+        let guide = view.safeAreaLayoutGuide
+        view.addSubview(dismissBtn)
+        dismissBtn.anchor(guide.topAnchor, bottom: nil, left: view.leftAnchor, right: view.rightAnchor, topConstant: 10, bottomConstant: 0, leftConstant: 10, rightConstant: -10, width: 0, height: 30)
+        
+        view.addSubview(raceTimeLbl)
+        raceTimeLbl.anchor(dismissBtn.bottomAnchor, bottom: nil, left: view.leftAnchor, right: view.rightAnchor, topConstant: 10, bottomConstant: 0, leftConstant: 10, rightConstant: -10, width: 0, height: 30)
+        
+        view.addSubview(bestTimeLbl)
+        bestTimeLbl.anchor(raceTimeLbl.bottomAnchor, bottom: nil, left: view.leftAnchor, right: view.rightAnchor, topConstant: 10, bottomConstant: 0, leftConstant: 10, rightConstant: -10, width: 0, height: 30)
+        
+    }
+    
+    @objc func dismissView() {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    func secondsToHoursMinutesSeconds(seconds : Int) -> (Int, Int, Int) {
+        return (seconds / 3600, (seconds % 3600) / 60, (seconds % 3600) % 60)
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

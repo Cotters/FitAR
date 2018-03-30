@@ -27,16 +27,6 @@ class ARCameraViewController: GameMapViewController, ARSCNViewDelegate {
     let pinNode = SCNNode()
     var anchors: [ARAnchor] = []
     
-    let resetBtn: UIButton = {
-        let btn = UIButton()
-        btn.setTitle("Reset", for: .normal)
-        btn.setTitleColor(.white, for: .normal)
-        btn.backgroundColor = .black
-        btn.titleLabel?.font = UIFont.systemFont(ofSize: 14)
-        btn.addTarget(self, action: #selector(resetScene), for: .touchUpInside)
-        return btn
-    }()
-    
     let progressBtn: UIButton = {
         let btn = UIButton()
         btn.setTitle("Cheat", for: .normal)
@@ -70,8 +60,7 @@ class ARCameraViewController: GameMapViewController, ARSCNViewDelegate {
         addRaceSelectBtn()
         
         // Reset Button
-        view.addSubview(resetBtn)
-        resetBtn.anchor(mapView.topAnchor, bottom: nil, left: nil, right: view.rightAnchor, topConstant: 5, bottomConstant: 0, leftConstant: 0, rightConstant: -5, width: 80, height: 20)
+        addRaceResetBtn()
         
         // TODO: Remove - only for testing
         // Progess Button
@@ -239,7 +228,8 @@ class ARCameraViewController: GameMapViewController, ARSCNViewDelegate {
         AVCaptureDevice.requestAccess(for: .video, completionHandler: { (granted: Bool) -> Void in
             if !granted {
                 // Link to settings to allow user to change their camera usage setting
-                self.showSettingsAlert(withMessage: "You must enable camera usage permission.")
+                let settingsURL = URL(string: UIApplicationOpenSettingsURLString)
+                self.showSettingsAlert(withMessage: "You must enable camera usage permission.", and: settingsURL)
                 return
             }
         })
@@ -318,11 +308,6 @@ class ARCameraViewController: GameMapViewController, ARSCNViewDelegate {
     func sessionWasInterrupted(_ session: ARSession) {
         // Inform the user that the session has been interrupted, for example, by presenting an overlay
         showMessage(withTitle: "Error", message: "Session was interupted.")
-        // Pause session?
-    }
-    
-    func sessionInterruptionEnded(_ session: ARSession) {
-        // Unpause if decided to pause ^
     }
     
     @objc override func resetScene() {
@@ -331,10 +316,11 @@ class ARCameraViewController: GameMapViewController, ARSCNViewDelegate {
         clearDirections()
         currentCheckpointCount = 0
         // Remove everything from mapView
-        mapView.removeAnnotations(mapView.annotations)
-        mapView.removeOverlays(mapView.overlays)
+        mapView.clear()
         // Remove all nodes from scene
         restartSessionWithoutDelete()
+        // Toggle buttons
+        toggleRaceResetBtn(show: false)
         toggleRaceSelectBtn(show: true)
     }
 }

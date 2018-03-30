@@ -26,6 +26,7 @@ extension UIColor {
         self.init(red: r/255, green: g/255, blue: b/255, alpha: 1.0)
     }
     
+    static let lightGrey = UIColor(r: 200, g: 200, b: 200)
     static let darkBackground = UIColor(r: 50, g: 55, b: 55)
     static let systemBlue = UIColor(r: 29, g: 155, b: 246)
     static let darkSystemBlue = UIColor(r: 6, g: 120, b: 200)
@@ -121,10 +122,10 @@ extension UIViewController {
         present(alertController, animated: true)
     }
     
-    public func showSettingsAlert(withMessage message: String) {
+    public func showSettingsAlert(withMessage message: String, and url: URL?) {
         let actions = [UIAlertAction(title: "Settings", style: .default, handler: { _ in
             DispatchQueue.main.async {
-                if let settingsURL = URL(string: UIApplicationOpenSettingsURLString) {
+                if let settingsURL = url {
                     UIApplication.shared.open(settingsURL, options: [:], completionHandler: nil)
                 }
             }
@@ -157,6 +158,20 @@ extension Double {
     
     func toDegrees() -> Double {
         return self * 180.0 / .pi
+    }
+}
+
+extension Int {
+    /// Converts a Double to a string representing the time of that Double.
+    var timeString: String {
+        let (h,m,s) = ((self / 3600), (self % 3600) / 60, (self % 60))
+        if h >= 1 {
+            return "\(h) hour, \(m)minutes and \(s)s"
+        } else if m >= 1 {
+            return "\(m) minutes \(s)s"
+        } else {
+            return "\(s) seconds"
+        }
     }
 }
 
@@ -268,17 +283,20 @@ public extension CLLocation {
 }
 
 extension MKMapView {
-    
     public func clear() {
         self.removeAnnotations(self.annotations)
         self.removeOverlays(self.overlays)
     }
-    
 }
 
 extension MKPointAnnotation {
-    
+    /// Retrieves the latitude and longitude values as a CLLocation object.
     public func getLocation() -> CLLocation {
         return CLLocation(latitude: self.coordinate.latitude, longitude: self.coordinate.longitude)
+    }
+    
+    /// Returns the distance between two MKPointAnnotations.
+    public func getDistance(to destination: MKPointAnnotation) -> Double {
+        return self.getLocation().distance(from: destination.getLocation())
     }
 }

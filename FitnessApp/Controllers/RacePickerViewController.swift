@@ -14,7 +14,7 @@ import FirebaseDatabase
 /// Used to fetch races and race data from Firebase
 protocol FetchRacesDelegate {
     func loadRaces(_ races: [Race], ofType type: RaceType)
-    func loadCheckpoints(_ race: Race)
+    func loadCheckpoints(for race: Race)
 }
 
 class RacePickerViewController: CustomTableViewController, FetchRacesDelegate {
@@ -73,7 +73,7 @@ class RacePickerViewController: CustomTableViewController, FetchRacesDelegate {
         refreshView()
     }
     
-    func loadCheckpoints(_ race: Race) {
+    func loadCheckpoints(for race: Race) {
         delegate?.didSelectRace(race)
         dismiss(animated: true, completion: nil)
     }
